@@ -8,6 +8,8 @@ interface PreferencesState {
   setDensity: (density: 'compact' | 'comfortable' | 'spacious') => void;
   defaultOpenMode: 'new_tab' | 'iframe_panel';
   setDefaultOpenMode: (mode: 'new_tab' | 'iframe_panel') => void;
+  burstMode: 'default' | 'cascade' | 'grid';
+  setBurstMode: (mode: 'default' | 'cascade' | 'grid') => void;
   iframeColumns: number;
   setIframeColumns: (cols: number) => void;
   searchDelay: number;
@@ -28,6 +30,8 @@ export const usePreferencesStore = create<PreferencesState>()(
       setDensity: (density) => set({ density }),
       defaultOpenMode: 'new_tab',
       setDefaultOpenMode: (mode) => set({ defaultOpenMode: mode }),
+      burstMode: 'default',
+      setBurstMode: (mode) => set({ burstMode: mode }),
       iframeColumns: 2,
       setIframeColumns: (cols) => set({ iframeColumns: cols }),
       searchDelay: 0,

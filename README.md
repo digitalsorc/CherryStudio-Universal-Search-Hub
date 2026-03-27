@@ -1,11 +1,11 @@
 # Search Central Hub
 
-A universal search aggregator that launches a single query across multiple configured search providers in one click.
+A universal search aggregator that launches a single query across multiple configured search providers in one click, featuring smart window management (Cascade, Grid) and specialized software/app trackers.
 
 ## Features
-- **Tab Burst Mode**: Opens each provider result in a new browser tab.
+- **Tab Burst Mode**: Opens each provider result in a new browser tab or window. Choose between Default (tabs), Cascade (staggered windows), or Grid (smartly tiled windows).
 - **Grid Iframe Mode**: Opens results side by side in a responsive iframe grid within the app.
-- **Provider System**: Add, edit, delete, and reorder search providers.
+- **Provider System**: Pre-configured with top software trackers (1337x Apps, RuTracker, MacBed, FileCR) and WP nulled sites (WPLocker, FestingerVault, NullCave), plus general search engines. Add, edit, delete, and reorder search providers.
 - **Auth System**: Securely store cookies and API keys using AES-256-GCM encryption with a Master PIN.
 - **CherryStudio Integration**: Deployable as a static site that can be loaded inside CherryStudio's Mini Program panel.
 

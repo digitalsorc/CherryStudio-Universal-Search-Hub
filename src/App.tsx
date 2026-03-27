@@ -12,7 +12,7 @@ import { cn } from './lib/utils';
 
 export default function App() {
   const { providers } = useProvidersStore();
-  const { defaultOpenMode, maxSimultaneousOpens, theme } = usePreferencesStore();
+  const { defaultOpenMode, maxSimultaneousOpens, theme, burstMode } = usePreferencesStore();
   
   const [activeQuery, setActiveQuery] = useState('');
   const [activeProviders, setActiveProviders] = useState<SearchProvider[]>([]);
@@ -35,10 +35,38 @@ export default function App() {
     targetProviders = targetProviders.slice(0, maxSimultaneousOpens);
 
     if (viewMode === 'new_tab') {
-      targetProviders.forEach(provider => {
-        const url = buildSearchUrl(provider, query);
-        window.open(url, '_blank', 'noopener,noreferrer');
-      });
+      if (burstMode === 'default') {
+        targetProviders.forEach(provider => {
+          const url = buildSearchUrl(provider, query);
+          window.open(url, '_blank', 'noopener,noreferrer');
+        });
+      } else if (burstMode === 'cascade') {
+        let x = 50;
+        let y = 50;
+        targetProviders.forEach(provider => {
+          const url = buildSearchUrl(provider, query);
+          window.open(url, '_blank', `width=800,height=600,left=${x},top=${y},noopener,noreferrer`);
+          x += 40;
+          y += 40;
+        });
+      } else if (burstMode === 'grid') {
+        const count = targetProviders.length;
+        const cols = Math.ceil(Math.sqrt(count));
+        const rows = Math.ceil(count / cols);
+        const screenW = window.screen.availWidth || 1920;
+        const screenH = window.screen.availHeight || 1080;
+        const w = Math.floor(screenW / cols);
+        const h = Math.floor(screenH / rows);
+        
+        targetProviders.forEach((provider, i) => {
+          const r = Math.floor(i / cols);
+          const c = i % cols;
+          const x = c * w;
+          const y = r * h;
+          const url = buildSearchUrl(provider, query);
+          window.open(url, '_blank', `width=${w},height=${h},left=${x},top=${y},noopener,noreferrer`);
+        });
+      }
     } else {
       setActiveQuery(query);
       setActiveProviders(targetProviders);

@@ -33,17 +33,18 @@ export function SearchBar({ onSearch }: SearchBarProps) {
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
+      e.preventDefault();
       if (e.ctrlKey || e.metaKey) {
-        handleSubmit(e, false); // Search selected only
-      } else {
         handleSubmit(e, true); // Search all
+      } else {
+        handleSubmit(e, false); // Search selected only
       }
     }
   };
 
   return (
     <div className="relative w-full max-w-3xl mx-auto">
-      <form onSubmit={(e) => handleSubmit(e, true)} className="relative flex items-center">
+      <form onSubmit={(e) => handleSubmit(e, false)} className="relative flex items-center">
         <div className="absolute left-4 text-zinc-400">
           <Search className="w-5 h-5" />
         </div>
@@ -55,11 +56,11 @@ export function SearchBar({ onSearch }: SearchBarProps) {
           onKeyDown={handleKeyDown}
           onFocus={() => setShowRecent(true)}
           onBlur={() => setTimeout(() => setShowRecent(false), 200)}
-          placeholder="Search across all providers..."
-          className="w-full h-14 pl-12 pr-32 text-lg bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-500 transition-colors"
+          placeholder="Search selected providers..."
+          className="w-full h-14 pl-12 pr-40 text-lg bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-500 transition-colors"
         />
         <div className="absolute right-3 flex items-center gap-2 text-xs text-zinc-400 font-medium">
-          <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 bg-zinc-100 dark:bg-zinc-800 rounded border border-zinc-200 dark:border-zinc-700">
+          <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 bg-zinc-100 dark:bg-zinc-800 rounded border border-zinc-200 dark:border-zinc-700" title="Search All">
             <Command className="w-3 h-3" /> Enter
           </kbd>
         </div>

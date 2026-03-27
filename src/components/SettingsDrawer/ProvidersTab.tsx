@@ -3,12 +3,12 @@ import { useProvidersStore } from '../../store/providers';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Switch } from '../ui/switch';
-import { Plus, Trash2, GripVertical, Download, Upload } from 'lucide-react';
+import { Plus, Trash2, GripVertical, Download, Upload, RotateCcw } from 'lucide-react';
 import { ProviderFormModal } from '../ProviderFormModal';
 import { SearchProvider } from '../../lib/defaultProviders';
 
 export function ProvidersTab() {
-  const { providers, toggleProvider, deleteProvider, importProviders } = useProvidersStore();
+  const { providers, toggleProvider, deleteProvider, importProviders, resetProviders } = useProvidersStore();
   const [search, setSearch] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProvider, setEditingProvider] = useState<SearchProvider | undefined>();
@@ -85,16 +85,25 @@ export function ProvidersTab() {
         ))}
       </div>
 
-      <div className="flex gap-2 pt-4 border-t border-zinc-200 dark:border-zinc-800">
-        <Button variant="outline" className="flex-1" onClick={handleExport}>
-          <Download className="w-4 h-4 mr-2" /> Export
-        </Button>
-        <div className="relative flex-1">
-          <Input type="file" accept=".json" onChange={handleImport} className="absolute inset-0 opacity-0 cursor-pointer" />
-          <Button variant="outline" className="w-full pointer-events-none">
-            <Upload className="w-4 h-4 mr-2" /> Import
+      <div className="flex flex-col gap-2 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+        <div className="flex gap-2">
+          <Button variant="outline" className="flex-1" onClick={handleExport}>
+            <Download className="w-4 h-4 mr-2" /> Export
           </Button>
+          <div className="relative flex-1">
+            <Input type="file" accept=".json" onChange={handleImport} className="absolute inset-0 opacity-0 cursor-pointer" />
+            <Button variant="outline" className="w-full pointer-events-none">
+              <Upload className="w-4 h-4 mr-2" /> Import
+            </Button>
+          </div>
         </div>
+        <Button variant="destructive" className="w-full" onClick={() => {
+          if (window.confirm('Are you sure you want to reset all providers to their default state? This will erase any custom providers.')) {
+            resetProviders();
+          }
+        }}>
+          <RotateCcw className="w-4 h-4 mr-2" /> Reset to Defaults
+        </Button>
       </div>
 
       {isModalOpen && (

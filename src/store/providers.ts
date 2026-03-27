@@ -10,6 +10,7 @@ interface ProvidersState {
   toggleProvider: (id: string) => void;
   reorderProviders: (startIndex: number, endIndex: number) => void;
   importProviders: (providers: SearchProvider[]) => void;
+  resetProviders: () => void;
 }
 
 export const useProvidersStore = create<ProvidersState>()(
@@ -31,6 +32,7 @@ export const useProvidersStore = create<ProvidersState>()(
         return { providers: result };
       }),
       importProviders: (providers) => set({ providers }),
+      resetProviders: () => set({ providers: defaultProviders }),
     }),
     {
       name: 'searchhub-providers',

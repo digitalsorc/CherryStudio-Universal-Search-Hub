@@ -36,23 +36,11 @@ export const defaultProviders: SearchProvider[] = [
     color: '#24292e'
   },
   {
-    id: 'ext_to',
-    name: 'ext.to',
-    icon: 'ext',
-    baseUrl: 'https://ext.to',
-    searchPath: '/search/?q={query}',
-    category: 'tracker',
-    authType: 'none',
-    openMode: 'new_tab',
-    enabled: true,
-    color: '#007bff'
-  },
-  {
-    id: '1337x',
-    name: '1337x',
+    id: '1337x_apps',
+    name: '1337x (Apps)',
     icon: '1337x',
     baseUrl: 'https://1337x.to',
-    searchPath: '/search/{query}/1/',
+    searchPath: '/category-search/{query}/Apps/1/',
     category: 'tracker',
     authType: 'none',
     openMode: 'new_tab',
@@ -60,16 +48,76 @@ export const defaultProviders: SearchProvider[] = [
     color: '#ed2024'
   },
   {
-    id: 'nyaa',
-    name: 'Nyaa.si',
-    icon: 'nyaa',
-    baseUrl: 'https://nyaa.si',
-    searchPath: '/?f=0&c=0_0&q={query}',
+    id: 'rutracker_apps',
+    name: 'RuTracker (Soft)',
+    icon: 'rutracker',
+    baseUrl: 'https://rutracker.org',
+    searchPath: '/forum/tracker.php?nm={query}',
     category: 'tracker',
     authType: 'none',
     openMode: 'new_tab',
     enabled: true,
     color: '#007bff'
+  },
+  {
+    id: 'filecr',
+    name: 'FileCR',
+    icon: 'filecr',
+    baseUrl: 'https://filecr.com',
+    searchPath: '/en/?q={query}',
+    category: 'tracker',
+    authType: 'none',
+    openMode: 'new_tab',
+    enabled: true,
+    color: '#00a8ff'
+  },
+  {
+    id: 'macbed',
+    name: 'MacBed',
+    icon: 'macbed',
+    baseUrl: 'https://www.macbed.com',
+    searchPath: '/?s={query}',
+    category: 'tracker',
+    authType: 'none',
+    openMode: 'new_tab',
+    enabled: true,
+    color: '#333333'
+  },
+  {
+    id: 'wplocker',
+    name: 'WPLocker',
+    icon: 'wordpress',
+    baseUrl: 'https://wplocker.com',
+    searchPath: '/?s={query}',
+    category: 'code',
+    authType: 'none',
+    openMode: 'new_tab',
+    enabled: true,
+    color: '#21759b'
+  },
+  {
+    id: 'festingervault',
+    name: 'FestingerVault',
+    icon: 'wordpress',
+    baseUrl: 'https://festingervault.com',
+    searchPath: '/?s={query}',
+    category: 'code',
+    authType: 'none',
+    openMode: 'new_tab',
+    enabled: true,
+    color: '#ff6b6b'
+  },
+  {
+    id: 'nullcave',
+    name: 'NullCave',
+    icon: 'wordpress',
+    baseUrl: 'https://nullcave.club',
+    searchPath: '/?s={query}',
+    category: 'code',
+    authType: 'none',
+    openMode: 'new_tab',
+    enabled: true,
+    color: '#8e44ad'
   },
   {
     id: 'google',
@@ -142,17 +190,5 @@ export const defaultProviders: SearchProvider[] = [
     openMode: 'new_tab',
     enabled: true,
     color: '#ff4500'
-  },
-  {
-    id: 'youtube',
-    name: 'YouTube',
-    icon: 'youtube',
-    baseUrl: 'https://youtube.com',
-    searchPath: '/results?search_query={query}',
-    category: 'media',
-    authType: 'none',
-    openMode: 'new_tab',
-    enabled: true,
-    color: '#ff0000'
   }
 ];
