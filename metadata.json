@@ -1,5 +1,5 @@
 {
-  "name": "",
-  "description": "",
+  "name": "Search Central Hub",
+  "description": "A universal search aggregator that launches queries across multiple search providers with smart window management",
   "requestFramePermissions": []
 }
